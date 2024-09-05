@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,6 +42,9 @@ const ProductTable = ({ products }: Props) => {
   useEffect(() => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
+    if(products.length < 5){
+      setItemsPerPage(products.length)
+    }
     setFilteredProducts(products.slice(start, end));
   }, [currentPage, itemsPerPage, products]);
 
