@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -71,11 +73,7 @@ const ProductTable = ({ products }: Props) => {
               {filteredProducts.map((product) => (
                 <TableRow key={product.id} className="hover:bg-gray-200">
                   <TableCell className="flex items-center space-x-3">
-                    <img
-                      src={product.imageUrl}
-                      alt={product.name}
-                      className="w-20 h-20 object-cover rounded-md"
-                    />
+                  <img src={product.imageUrl} alt={product.name} className="w-20 h-20 object-cover rounded-md" />
                     <div className="font-medium text-base text-gray-700">{product.name}</div>
                   </TableCell>
                   <TableCell>
