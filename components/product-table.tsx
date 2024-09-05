@@ -44,6 +44,9 @@ const ProductTable = ({ products }: Props) => {
   useEffect(() => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
+    if(products.length < 5){
+      setItemsPerPage(products.length)
+    }
     setFilteredProducts(products.slice(start, end));
   }, [currentPage, itemsPerPage, products]);
 
