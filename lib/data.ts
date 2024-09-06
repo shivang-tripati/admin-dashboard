@@ -51,7 +51,7 @@ export const products = [
       "price": 89.00,
       "totalSales": 250,
       "createdAt": "2024-06-23",
-      "imageUrl": "/https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVNr9tls10-N3pbIbEM9tFOvGRDqXdoZNFTw&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVNr9tls10-N3pbIbEM9tFOvGRDqXdoZNFTw&s"
     },
     {
       "id": 7,
