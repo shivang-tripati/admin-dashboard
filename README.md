@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Product Dashboard
 
-## Getting Started
+A responsive web-based dashboard for managing and monitoring product performance. This dashboard allows users to view products, their details, sales performance, and manage their status such as Active, Draft, or Archived.
 
-First, run the development server:
+[See Live](https://admin-dashboard-mauve-six.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Product Management**: View, edit, and manage product details such as name, price, total sales, and status.
+- **Filter Products**: Easily filter between Active, Draft, and Archived products.
+- **Sales Overview**: Display total sales for each product.
+- **Responsive Design**: Optimized for desktop and mobile devices.
+- **Product Creation**: Add new products to the dashboard.
+- **Export Functionality**: Export product data.(not functional yet)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Table of Contents
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [Raw Data](#raw-data)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **Backend**: Node.js (for any server-side logic)
+- **Deployment**: Vercel (or your preferred platform)
+- **Icons**: FontAwesome
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/yourusername/product-dashboard.git
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Navigate to the project directory:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   cd product-dashboard
+
+2. Install dependencies:
+
+   ```bash
+   cd npm install
+
+4. Run the project:
+
+   ```bash
+   npm run dev
+
+##Usage
+To view the products, open the dashboard.
+Add a new product by clicking on the "Add Product" button.
+Filter between different product statuses (Active, Draft, Archived).
+Export the product list in CSV format.
+
