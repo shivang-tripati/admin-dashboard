@@ -20,45 +20,40 @@ import {
 import { UserCircle2Icon } from "lucide-react";
 
 const Dashboard = () => {
-    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState("");
-    const [currentFilter, setCurrentFilter] = useState("All");
-    const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentFilter, setCurrentFilter] = useState("All");
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(initialProducts);
 
-    const toggleUserMenu = () => {
-        setIsUserMenuOpen(!isUserMenuOpen);
-    };
-  const handleFilter = (filter: string) => {
-    setCurrentFilter(filter);
+  const toggleUserMenu = () => {
+    setIsUserMenuOpen(!isUserMenuOpen);
   };
 
-  
-  const handleSearchQueryChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleFilter = (filter: string) => {
+    setCurrentFilter(filter);
+    setFilteredProducts(initialProducts);
+  };
+
+  const handleSearchQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 
-
   useEffect(() => {
-    let filtered = initialProducts;    
+    let filtered = initialProducts;
+  
+    
     if (currentFilter !== "All") {
-      filtered = filtered.filter(
-        (product) => product.status === currentFilter
-      );
+      filtered = filtered.filter((product) => product.status === currentFilter);
     }
+  
     if (searchQuery) {
       filtered = filtered.filter((product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
-    }
-
-    setFilteredProducts(filtered.map((product) => ({
-        ...product,
-        status: product.status as "Active" | "Draft" | "Archived",
-      })));  },
-      
-    [searchQuery, currentFilter]);
+    } 
+    setFilteredProducts(filtered);
+  }, [currentFilter, searchQuery]); 
+  
 
   return (
     <div className="flex h-screen w-full bg-gray-100">
@@ -92,29 +87,47 @@ const Dashboard = () => {
               value={searchQuery}
               onChange={handleSearchQueryChange}
             />
-    
-            <UserCircle2Icon 
-          className="h-10 w-10 cursor-pointer text-gray-600" 
-          onClick={toggleUserMenu}
-        />
-        {isUserMenuOpen && (
-          <div className="absolute right-0 mt-10 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-            <a href="/account" className="block font-bold px-4 py-2 text-gray-900 hover:bg-gray-100">My Account</a>
-            <div className="border-t border-gray-200"></div>
-            <div className="py-1">
-            <a href="/account" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Settingst</a>
-              <a href="/support" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Support</a>
-              <a href="/signin" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sign In</a>
-            </div>
+            <UserCircle2Icon
+              className="h-10 w-10 cursor-pointer text-gray-600"
+              onClick={toggleUserMenu}
+            />
+            {isUserMenuOpen && (
+              <div className="absolute right-0 mt-10 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <a
+                  href="/account"
+                  className="block font-bold px-4 py-2 text-gray-900 hover:bg-gray-100"
+                >
+                  My Account
+                </a>
+                <div className="border-t border-gray-200"></div>
+                <div className="py-1">
+                  <a
+                    href="/account"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Settings
+                  </a>
+                  <a
+                    href="/support"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Support
+                  </a>
+                  <a
+                    href="/signin"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Sign In
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-          </div>
-          
         </nav>
 
         {/* Top Bar */}
         <div className="flex flex-row items-center justify-between items-center mb-6 ">
-        <div className="flex space-x-2 mb-4 items-center">
+          <div className="flex space-x-2 mb-4 items-center">
             {["All", "Active", "Draft", "Archived"].map((filter) => (
               <Button
                 key={filter}
@@ -126,7 +139,6 @@ const Dashboard = () => {
             ))}
           </div>
           <div className="flex items-center space-x-4">
-          
             <Button variant="default">Export</Button>
             <Dialog>
               <DialogTrigger asChild>
@@ -185,7 +197,7 @@ const Dashboard = () => {
         </div>
 
         {/* Table */}
-        <ProductTable products={filteredProducts} />
+        <ProductTable  key={filteredProducts.length} products={filteredProducts} />
       </main>
     </div>
   );

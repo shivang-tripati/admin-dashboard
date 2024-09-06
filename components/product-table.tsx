@@ -20,10 +20,11 @@ import { Button } from "./ui/button";
 import { MoreHorizontalIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
+
 export interface Product {
   id: number;
   name: string;
-  status: "Active" | "Draft" | "Archived";
+  status: string,
   price: number;
   totalSales: number;
   createdAt: string;
